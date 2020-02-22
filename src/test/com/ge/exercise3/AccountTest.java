@@ -18,6 +18,7 @@ public class AccountTest {
 
     @Test
     public void depositAndWithdrawTest() {
+        checkingAccount.setAccountType("Checking");
         checkingAccount.setBalance(0.0f);
         checkingAccount.deposit(100.0f);
         assertEquals(100.0f, checkingAccount.getBalance(), 0.01);
@@ -53,5 +54,18 @@ public class AccountTest {
 
         savingsAccount.setMonthlyInterestRate(1.02f);
         assertEquals("High interest no fee savings account #005", savingsAccount.toString());
+    }
+
+    @Test(expected = OverdrawnLimitExceededException.class)
+    public void checkWithdrawalLimitTest(){
+        checkingAccount= new Account("005", "Checking", 500.0f);
+        checkingAccount.withdraw(200);
+
+    }
+    @Test(expected = BalanceNotAvaiableException.class)
+    public void checkNegativeBalanceTest(){
+        savingsAccount= new Account("006", "Savings", 100.0f);
+        savingsAccount.withdraw(101);
+
     }
 }

@@ -7,8 +7,8 @@ public class Account {
 
     private static final Logger logger = LogManager.getLogger(Account.class);
 
-    private static float monthlyInterestRate = 1.01f;
-    private static float monthlyFee = 0.0f;
+    private float monthlyInterestRate = 1.01f;
+    private float monthlyFee = 0.0f;
 
     private String accountNumber;
     private String accountType;
@@ -65,8 +65,14 @@ public class Account {
     }
 
     public void withdraw(float amount) {
+        if(this.accountType.equals("Checking") && amount > 100){
+            throw new OverdrawnLimitExceededException(amount);
+        }else if(this.accountType.equals("Savings") && (balance - amount) < 0 ){
+            throw new BalanceNotAvaiableException(balance);
+        }
         balance -= amount;
     }
+
 
     public float getMonthlyInterestRate() {
         return monthlyInterestRate;

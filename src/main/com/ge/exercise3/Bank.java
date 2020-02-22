@@ -34,4 +34,26 @@ public class Bank {
     public int numAccounts() {
         return accountMap.size();
     }
+
+    /**
+     * Calculate Sum of holdings of the account
+     * @return
+     */
+    public float getSumOfAccountHoldings(){
+
+       return  accountMap.values().stream().map(Account::getBalance).reduce(0.0f, Float::sum);
+    }
+
+    /**
+     * Calculate Net Income
+     * @return
+     */
+    public String netIncome(){
+
+       float sumOFHoldings = getSumOfAccountHoldings();
+       float sumOfIncome = accountMap.values().stream().map(Account::valueNextMonth).reduce(0.0f, Float::sum);
+       float ammoutSpent = sumOfIncome- sumOFHoldings;
+       float monthlyFeeCollected = accountMap.values().stream().map(Account::getMonthlyFee).reduce(0.0f, Float::sum);
+       return (monthlyFeeCollected - ammoutSpent)> 0 ? "Profit":"Loss";
+    }
 }
