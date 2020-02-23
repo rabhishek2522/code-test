@@ -1,6 +1,9 @@
 package com.ge.exercise1;
 
-import java.util.Collection;
+import com.ge.exercise1.impl.GroupImpl;
+import com.ge.exercise1.impl.UserImpl;
+
+import java.util.List;
 
 public abstract class Application {
     private String id;
@@ -27,11 +30,11 @@ public abstract class Application {
         this.id = id;
     }
 
-    public abstract Collection<User> getUsers();
+    public abstract List<UserImpl> getUsers();
 
     public abstract User getUser(String userId);
 
-    public abstract Collection<Group> getGroups();
+    public abstract List<GroupImpl> getGroups();
 
     public abstract Group getGroup(String groupId);
 

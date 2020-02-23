@@ -1,4 +1,4 @@
-package com.ge.exercise3;
+package com.ge.exercise3.exception;
 
 /**
  * OverdrawnLimitExceededException prevent checking accounts from being overdrawn by more that $100

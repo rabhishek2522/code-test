@@ -1,4 +1,4 @@
-package com.ge.exercise3;
+package com.ge.exercise3.exception;
 
 /**
  * BalanceNotAvaiableException prevent savings accounts from ever having a negative balance in the account

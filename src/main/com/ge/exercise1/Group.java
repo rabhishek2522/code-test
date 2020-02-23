@@ -9,6 +9,10 @@ public abstract class Group {
         this.name = name;
     }
 
+    public Group() {
+    this.size =1;
+    }
+
     public String getId() {
         return id;
     }

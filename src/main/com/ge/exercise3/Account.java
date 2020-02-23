@@ -1,5 +1,7 @@
 package com.ge.exercise3;
 
+import com.ge.exercise3.exception.BalanceNotAvaiableException;
+import com.ge.exercise3.exception.OverdrawnLimitExceededException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
